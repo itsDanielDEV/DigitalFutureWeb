@@ -1,0 +1,29 @@
+body {
+  min-height: 90vh;
+  max-width: 1200px;
+  background-color: #0001;
+  align-self: center;
+  /* overflow: hidden; */
+}
+
+.mobile-side {
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 0.5rem;
+}
+
+.left-side {
+  background-image: url(../assets/lock.jpg);
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}
+
+.right-side {
+  padding: 2rem;
+  background-color: #fff;
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
