@@ -34,6 +34,7 @@ img {
   font-size: calc(0.8em + 0.5vw);
 }
 
+/* Carousel */
 .carousel-indicators {
   bottom: -10px;
 }
