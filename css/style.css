@@ -6,24 +6,53 @@
 }
 
 body {
-  max-width: 1200px;
-  background-color: #0001;
+  max-width: 1600px;
+  /* background-color: #0001; */
+  /* background-color: #0001; */
 }
 
 /* .navbar {
   background-color: #99d7d7 !important;
 } */
 
-.nav-item:hover {
+/* .nav-item:hover {
   border-radius: 0.2rem;
   background-color: #0001;
+
+} */
+
+/* seguir aqui */
+/* .account:hover i {
+  color: #fff !important;
+} */
+
+.account:hover {
+  background-color: #6c757d;
+  color: white;
+}
+
+.account i {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: inherit !important;
+}
+
+.account svg {
+  margin-right: 0.5rem;
 }
 
 .cta {
   padding: 0.2rem;
   color: #fff;
-  background-color: var(--second-color);
+  /* background-color: var(--second-color); */
+  background-color: #000;
+  /* background-color: orange; */
 }
+
+/* .cta a {
+  color: blue !important;
+} */
 
 img {
   max-width: 100%;
@@ -37,4 +66,34 @@ img {
 /* Carousel */
 .carousel-indicators {
   bottom: -10px;
+}
+
+/* home.html */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Muestra 4 columnas iguales */
+  grid-gap: 20px; /* Espacio entre tarjetas */
+  justify-content: center; /* Centra horizontalmente */
+  padding: 20px; /* Espacio alrededor del grid */
+  margin: 0 auto; /* Centra el grid horizontalmente */
+  max-width: 960px; /* Ancho máximo del grid */
+}
+
+.card-categories {
+  background-color: #80ca5f;
+  color: white;
+}
+
+li {
+  list-style: none;
+}
+
+li a {
+  color: var(--second-color);
+}
+
+@media screen and (max-width: 1000px) {
+  .nav-menu {
+    display: none;
+  }
 }

@@ -1,6 +1,6 @@
 body {
   min-height: calc(100vh - env(safe-area-inset-bottom));
-  max-width: 1200px;
+  max-width: 1600px;
   background-color: #0001;
   align-self: center;
   /* overflow: hidden; */
