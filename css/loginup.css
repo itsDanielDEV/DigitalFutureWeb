@@ -1,5 +1,5 @@
 body {
-  min-height: 90vh;
+  min-height: calc(100vh - env(safe-area-inset-bottom));
   max-width: 1200px;
   background-color: #0001;
   align-self: center;
