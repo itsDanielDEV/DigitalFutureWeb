@@ -53,16 +53,22 @@ body {
   /* background-color: orange; */
 }
 
-.inner-dkp {
-  height: inherit;
+.categories-dkp {
+  height: auto;
+}
+
+/* .inner-dkp {
   padding-left: 1rem;
   padding-right: 1rem;
+} */
+
+.inner-dkp a {
+  border: thin solid #000;
 }
 
 .inner-dkp a {
   color: #fff;
   text-decoration: none;
-  border: thin solid #000;
 }
 
 .inner-dkp .dkp-names > *:hover {
@@ -113,4 +119,28 @@ img {
   background-color: var(--bg-hover);
   color: #fff;
   cursor: pointer;
+}
+
+/* admin */
+th,
+td {
+  text-align: center;
+}
+
+/* tr {
+  display: flex;
+} */
+
+td {
+  word-wrap: break-word;
+  /* max-width: 30vw; */
+}
+
+.actions {
+  white-space: nowrap;
+}
+
+.admin-sections section {
+  margin-bottom: 5rem;
+  /* height: 30vh; */
 }
