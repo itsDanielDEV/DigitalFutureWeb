@@ -3,6 +3,8 @@
   --first-color: #68bdd1;
   --second-color: #80ca5f;
   --third-color: #994fba;
+  --bg-icon-hover: #6c757d;
+  --bg-hover: blue;
 }
 
 body {
@@ -27,8 +29,8 @@ body {
 } */
 
 .account:hover {
-  background-color: #6c757d;
-  color: white;
+  background-color: var(--bg-icon-hover);
+  color: #fff;
 }
 
 .account i {
@@ -42,12 +44,30 @@ body {
   margin-right: 0.5rem;
 }
 
-.cta {
+.cta,
+.categories-dkp {
   padding: 0.2rem;
   color: #fff;
   /* background-color: var(--second-color); */
   background-color: #000;
   /* background-color: orange; */
+}
+
+.inner-dkp {
+  height: inherit;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.inner-dkp a {
+  color: #fff;
+  text-decoration: none;
+  border: thin solid #000;
+}
+
+.inner-dkp .dkp-names > *:hover {
+  background-color: var(--bg-icon-hover);
+  border: thin solid #fff;
 }
 
 /* .cta a {
@@ -69,31 +89,28 @@ img {
 }
 
 /* home.html */
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr); /* Muestra 4 columnas iguales */
-  grid-gap: 20px; /* Espacio entre tarjetas */
-  justify-content: center; /* Centra horizontalmente */
-  padding: 20px; /* Espacio alrededor del grid */
-  margin: 0 auto; /* Centra el grid horizontalmente */
-  max-width: 960px; /* Ancho máximo del grid */
+.categories {
+  padding: 0 !important;
 }
 
-.card-categories {
-  background-color: #80ca5f;
-  color: white;
+.categories a {
+  padding-left: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  font-size: 14px;
+  color: inherit;
+  text-decoration: none;
+  width: 100%;
 }
 
-li {
-  list-style: none;
+.categories .categories-title {
+  border-bottom: thin solid var(--bg-icon-hover);
+  font-size: 18px;
+  font-weight: bold;
 }
 
-li a {
-  color: var(--second-color);
-}
-
-@media screen and (max-width: 1000px) {
-  .nav-menu {
-    display: none;
-  }
+.categories .categories-item:hover {
+  background-color: var(--bg-hover);
+  color: #fff;
+  cursor: pointer;
 }
