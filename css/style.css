@@ -63,17 +63,14 @@ body {
 } */
 
 .inner-dkp a {
-  border: thin solid #000;
-}
-
-.inner-dkp a {
+  /* border: thin solid transparent; */
   color: #fff;
   text-decoration: none;
 }
 
 .inner-dkp .dkp-names > *:hover {
   background-color: var(--bg-icon-hover);
-  border: thin solid #fff;
+  /* border: thin solid #fff; */
 }
 
 /* .cta a {
