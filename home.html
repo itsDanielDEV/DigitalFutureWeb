@@ -22,7 +22,7 @@
     <!-- Header -->
     <header>
       <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top">
-        <div class="container-fluid">
+        <div id="parent-canvas-mobile" class="container-fluid">
           <!-- Hamburguer and logo -->
           <div
             class="navbar-brand d-flex justify-content-center align-items-center"
@@ -39,7 +39,7 @@
             </button>
             <a
               class="navbar-brand d-flex justify-content-center align-items-center"
-              href="./index.html"
+              href="./home.html"
             >
               <img
                 class="me-1"
@@ -115,7 +115,7 @@
 
           <!-- Lateral bar -->
           <aside
-            class="offcanvas offcanvas-start"
+            class="offcanvas offcanvas-start offcanvas-mobile"
             tabindex="-1"
             id="offcanvasNavbar"
             aria-labelledby="offcanvasNavbarLabel"
@@ -272,7 +272,10 @@
           <button class="btn btn-outline-primary" type="submit">Search</button>
         </form>
       </nav>
-      <article class="container-fluid categories-dkp d-none d-lg-block">
+      <article
+        id="parent-canvas-dkp"
+        class="container-fluid categories-dkp d-none d-lg-block"
+      >
         <section
           class="inner-dkp d-flex justify-content-between align-items-strech"
         >
@@ -313,7 +316,7 @@
         </section>
 
         <aside
-          class="offcanvas offcanvas-start"
+          class="offcanvas offcanvas-start ctm-offcanvas-dkp"
           tabindex="-1"
           id="offcanvasExample"
           aria-labelledby="offcanvasExampleLabel"
@@ -2420,5 +2423,6 @@
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
       crossorigin="anonymous"
     ></script>
+    <script src="./js/main.js"></script>
   </body>
 </html>
