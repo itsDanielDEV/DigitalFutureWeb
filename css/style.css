@@ -141,3 +141,45 @@ td {
   margin-bottom: 5rem;
   /* height: 30vh; */
 }
+
+/* Cart */
+.item-cart {
+  width: 100%;
+  height: 5rem;
+  padding: 0.3rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  border: thin solid #000;
+  border-radius: 5px;
+}
+
+.item-cart-img {
+  height: 80%;
+  width: auto;
+}
+
+.item-cart-info {
+  padding: 0.5rem;
+}
+.item-cart-info > * {
+  margin: 0;
+}
+
+.item-cart-price {
+  font-size: 14px;
+}
+
+#item-desc {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1;
+  line-clamp: 4;
+  text-align: start;
+}
