@@ -21,6 +21,7 @@
     <div class="container-lg">
       <div class="row">
         <div
+          id="login-panel"
           class="col-12 mobile-side d-flex d-md-none flex-column justify-content-evenly align-items-center"
         >
           <p class="align-self-start">
@@ -44,21 +45,19 @@
             >
           </p>
 
-          <form class="w-100" action="">
+          <form class="w-100" action="./home.html" method="get">
             <h1 class="text-primary text-center mt-3 mb-3">Login</h1>
             <div class="input-group has-validation">
               <div class="form-floating">
                 <input
                   type="email"
                   class="form-control"
-                  id="inputEmailMobile"
+                  id="inputEmail"
                   placeholder=""
                   autocomplete="off"
                   required
                 />
-                <label for="inputEmailMobile" class="form-label"
-                  >Email address</label
-                >
+                <label for="inputEmail" class="form-label">Email address</label>
               </div>
             </div>
 
@@ -67,11 +66,11 @@
                 <input
                   type="password"
                   class="form-control"
-                  id="inputPassMobile"
+                  id="inputPass"
                   placeholder=""
                   required
                 />
-                <label for="inputPassMobile">Password</label>
+                <label for="inputPass">Password</label>
               </div>
             </div>
 
@@ -85,8 +84,9 @@
 
             <div class="d-flex justify-content-center mt-4 mb-4">
               <button
+                id="btn-submit"
                 type="submit"
-                class="btn btn-primary btn-mobile-submit flex-grow-1"
+                class="btn btn-primary flex-grow-1"
               >
                 Log In
               </button>
@@ -109,6 +109,7 @@
         </div>
         <!-- Log In - Desktop-2 -->
         <div
+          id="login-panel"
           class="col-6 right-side d-none d-md-flex flex-column justify-content-evenly align-items-center"
         >
           <p class="align-self-start">
@@ -132,39 +133,40 @@
             >
           </p>
 
-          <form class="needs-validation w-100" action="" novalidate>
+          <form
+            class="needs-validation w-100"
+            action="./home.html"
+            method="get"
+            novalidate
+          >
             <h1 class="text-primary text-center mt-3 mb-3">Login</h1>
 
             <!-- Email Input Desktop -->
             <div class="input-group has-validation">
-              <div class="form-floating is-invalid">
+              <div class="form-floating">
                 <input
                   type="email"
-                  class="form-control is-invalid"
-                  id="floatingInput"
+                  class="form-control"
+                  id="inputEmail"
                   placeholder=""
                   autocomplete="off"
                   required
                 />
-                <label for="floatingInput" class="form-label"
-                  >Email address</label
-                >
+                <label for="inputEmail" class="form-label">Email address</label>
               </div>
-              <div class="invalid-feedback">Please choose a username.</div>
             </div>
 
             <div class="input-group has-validation">
-              <div class="form-floating mt-3 is-invalid">
+              <div class="form-floating mt-3">
                 <input
                   type="password"
-                  class="form-control is-invalid"
-                  id="floatingPassword"
+                  class="form-control"
+                  id="inputPass"
                   placeholder=""
                   required
                 />
-                <label for="floatingPassword">Password</label>
+                <label for="inputPass">Password</label>
               </div>
-              <div class="invalid-feedback">Please choose a username.</div>
             </div>
 
             <p class="text-end">
@@ -176,7 +178,11 @@
             </p>
 
             <div class="d-flex justify-content-center mt-4 mb-4">
-              <button type="submit" class="btn btn-primary flex-grow-1">
+              <button
+                id="btn-submit"
+                type="submit"
+                class="btn btn-primary flex-grow-1"
+              >
                 Log In
               </button>
             </div>

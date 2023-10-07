@@ -17,9 +17,9 @@ function inputChecker($input, tag = "") {
       $formFloating.appendChild($invalidFeedback);
   }
 
-  // Si el input es de contraseña y su longitud es menor o igual a 8
+  // Si el input es de contraseña y su longitud es mayor a 0 y  menor o igual a 8
   if (
-    $input.id === "inputPassMobile" &&
+    $input.id === "inputPass" &&
     Number($input.value.length) > 0 &&
     Number($input.value.length) <= 8
   ) {
@@ -33,10 +33,7 @@ function inputChecker($input, tag = "") {
         .remove();
 
     $formFloating.appendChild($invalidFeedback);
-  } else if (
-    $input.id === "inputPassMobile" &&
-    Number($input.value.length) > 8
-  ) {
+  } else if ($input.id === "inputPass" && Number($input.value.length) > 8) {
     $input.classList.remove("is-invalid");
     $input.classList.add("is-valid");
   }
@@ -82,17 +79,27 @@ function emailValidator($inputEmail, regex) {
 }
 
 function loginValidation() {
+  // console.log(d.body.querySelectorAll("#inputEmail"));
+  // console.log(d.body.querySelectorAll("#inputPass"));
+  // let loginPanels = d.body.querySelectorAll("#login-panel");
+
+  // let panelActive = -1;
+  // loginPanels.forEach((el, index) => {
+  //   if (getComputedStyle(el).display !== "none" && panelActive === -1)
+  //     panelActive = index;
+  // });
+
   d.addEventListener("focusout", (e) => {
-    if (e.target.matches("#inputEmailMobile")) {
+    if (e.target.matches("#inputEmail")) {
       inputChecker(e.target, "Email address");
     }
-    if (e.target.matches("#inputPassMobile")) {
+    if (e.target.matches("#inputPass")) {
       inputChecker(e.target, "Password");
     }
   });
 
   d.addEventListener("focusout", (e) => {
-    if (e.target.matches("#inputEmailMobile")) {
+    if (e.target.matches("#inputEmail")) {
       emailValidator(
         e.target,
         /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
@@ -100,21 +107,27 @@ function loginValidation() {
     }
   });
 
-  d.body.querySelector(".btn-mobile-submit").addEventListener("click", (e) => {
-    const $inputEmail = e.target
-        .closest("form")
-        .querySelector("#inputEmailMobile"),
-      $inputPass = e.target.closest("form").querySelector("#inputPassMobile");
+  d.addEventListener("click", (e) => {
+    if (e.target.matches("#btn-submit")) {
+      let $btnSubmit = e.target;
 
-    if (!$inputEmail.value || !$inputPass.value) {
-      inputChecker($inputEmail, "Email address");
-      inputChecker($inputPass, "Password");
-    }
-    if (
-      $inputEmail.classList.contains("is-invalid") ||
-      $inputPass.classList.contains("is-invalid")
-    ) {
-      e.preventDefault();
+      console.log($btnSubmit);
+
+      const $inputEmail = $btnSubmit
+          .closest("form")
+          .querySelector("#inputEmail"),
+        $inputPass = $btnSubmit.closest("form").querySelector("#inputPass");
+
+      if (!$inputEmail.value || !$inputPass.value) {
+        inputChecker($inputEmail, "Email address");
+        inputChecker($inputPass, "Password");
+        e.preventDefault();
+      } else if (
+        $inputEmail.classList.contains("is-invalid") ||
+        $inputPass.classList.contains("is-invalid")
+      ) {
+        e.preventDefault();
+      }
     }
   });
 }
