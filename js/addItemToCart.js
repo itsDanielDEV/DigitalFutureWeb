@@ -22,6 +22,7 @@ function decreaseNumTextarea(textarea) {
 
 function removeFromCart(textarea) {
   textarea.closest(".item-cart").remove();
+  updateSubtotalPrice();
 }
 
 function updatePrice(itemId, textarea, itemPriceCart) {
@@ -29,6 +30,20 @@ function updatePrice(itemId, textarea, itemPriceCart) {
   let price = products.filter((product) => product.id === Number(itemId));
   price = price[0].price.slice([1]);
   itemPriceCart.textContent = "$" + Number(price) * Number(textarea.value);
+}
+
+function updateSubtotalPrice() {
+  let $offcanvasCart = d.querySelector("#offcanvasCart"),
+    $subtotalPrice = $offcanvasCart.querySelector("#subtotal-price"),
+    $listPrices = $offcanvasCart.querySelectorAll(".item-cart-price");
+
+  let total = 0;
+  if ($listPrices.length === 0) $subtotalPrice.textContent = total;
+
+  $listPrices.forEach((el) => {
+    total += Number(el.textContent.slice(1));
+    $subtotalPrice.textContent = total;
+  });
 }
 
 function itemsToCart() {
@@ -50,6 +65,8 @@ function itemsToCart() {
 
         addNumTextarea($valueTextAreaSelected);
         updatePrice($idItemCart, $valueTextAreaSelected, $priceItemInCart);
+        updateSubtotalPrice();
+
         return;
       }
 
@@ -118,6 +135,7 @@ function itemsToCart() {
         if (!Number.isInteger(Number(e.target.value)))
           e.target.value = Math.round(e.target.value);
       });
+      updateSubtotalPrice();
     }
 
     //Sumar productos en el cart
@@ -129,6 +147,7 @@ function itemsToCart() {
         e.target.previousSibling,
         e.target.closest(".item-cart").querySelector(".item-cart-price")
       );
+      updateSubtotalPrice();
     }
 
     //Restar productos en el cart
@@ -140,6 +159,7 @@ function itemsToCart() {
         e.target.nextSibling,
         e.target.closest(".item-cart").querySelector(".item-cart-price")
       );
+      updateSubtotalPrice();
     }
   });
 }

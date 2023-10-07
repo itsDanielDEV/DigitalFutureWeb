@@ -52,11 +52,21 @@ const products = [
   {
     id: 5,
     category: "accessories",
-    name: "funda Mariana",
-    description: "fundas muy bonitas y baratas",
-    price: "$10000.00",
+    name: "Stylish Case",
+    description:
+      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus tempora, ducimus voluptatibus earum beatae, repellat iure eveniet cum aspernatur eos ipsam vel culpa? Molestias minima in temporibus, placeat fugiat est.",
+    price: "$15",
     imgURL:
       "https://us.123rf.com/450wm/yuragolub/yuragolub1912/yuragolub191200192/136014435-fundas-de-tel%C3%A9fonos-m%C3%B3viles-decoradas-con-cuentas-y-pedrer%C3%ADa.jpg",
+  },
+  {
+    id: 6,
+    category: "computers",
+    name: "PC Gamer",
+    description:
+      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus tempora, ducimus voluptatibus earum beatae, repellat iure eveniet cum aspernatur eos ipsam vel culpa? Molestias minima in temporibus, placeat fugiat est.",
+    price: "$5000",
+    imgURL: "https://i.ytimg.com/vi/dBW1PipPNac/maxresdefault.jpg",
   },
 ];
 
