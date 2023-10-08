@@ -19,7 +19,7 @@ function inputChecker($input, tag = "") {
 
   // Si el input es de contraseña y su longitud es mayor a 0 y  menor o igual a 8
   if (
-    $input.id === "inputPass" &&
+    ($input.id === "inputPass" || $input.id === "verifyInputPass") &&
     Number($input.value.length) > 0 &&
     Number($input.value.length) <= 8
   ) {
@@ -33,13 +33,16 @@ function inputChecker($input, tag = "") {
         .remove();
 
     $formFloating.appendChild($invalidFeedback);
-  } else if ($input.id === "inputPass" && Number($input.value.length) > 8) {
+  } else if (
+    ($input.id === "inputPass" || $input.id === "verifyInputPass") &&
+    Number($input.value.length) > 8
+  ) {
     $input.classList.remove("is-invalid");
     $input.classList.add("is-valid");
   }
 }
 
-function emailValidator($inputEmail, regex) {
+function emailValidator($inputEmail, tag, regex) {
   const $formFloating = $inputEmail.closest(".form-floating");
 
   let $invalidFeedback = d.createElement("div");
@@ -64,7 +67,7 @@ function emailValidator($inputEmail, regex) {
     $inputEmail.classList.add("is-invalid");
 
     $inputEmail.classList.add("is-invalid");
-    $invalidFeedback.textContent = `Please enter a valid email address.`;
+    $invalidFeedback.textContent = `Please enter a valid ${tag}.`;
 
     if (
       $inputEmail.closest(".form-floating").querySelector(".invalid-feedback")
@@ -79,31 +82,45 @@ function emailValidator($inputEmail, regex) {
 }
 
 function loginValidation() {
-  // console.log(d.body.querySelectorAll("#inputEmail"));
-  // console.log(d.body.querySelectorAll("#inputPass"));
-  // let loginPanels = d.body.querySelectorAll("#login-panel");
-
-  // let panelActive = -1;
-  // loginPanels.forEach((el, index) => {
-  //   if (getComputedStyle(el).display !== "none" && panelActive === -1)
-  //     panelActive = index;
-  // });
+  let signup = false;
+  if (d.querySelector("#verifyInputPass")) {
+    signup = true;
+  }
 
   d.addEventListener("focusout", (e) => {
     if (e.target.matches("#inputEmail")) {
       inputChecker(e.target, "Email address");
+      emailValidator(
+        e.target,
+        "email address",
+        /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
+      );
     }
     if (e.target.matches("#inputPass")) {
       inputChecker(e.target, "Password");
     }
-  });
-
-  d.addEventListener("focusout", (e) => {
-    if (e.target.matches("#inputEmail")) {
+    if (e.target.matches("#verifyInputPass")) {
+      inputChecker(e.target, "Verify Password");
+    }
+    if (e.target.matches("#firstName")) {
+      inputChecker(e.target, "First Name");
       emailValidator(
         e.target,
-        /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
+        "first name",
+        new RegExp("^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ][a-zA-ZáéíóúÁÉÍÓÚñÑüÜs]*$")
       );
+    }
+    if (e.target.matches("#lastName")) {
+      inputChecker(e.target, "Last Name");
+      emailValidator(
+        e.target,
+        "last name",
+        new RegExp("^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ][a-zA-ZáéíóúÁÉÍÓÚñÑüÜs]*$")
+      );
+    }
+    if (e.target.matches("#inputAddress")) {
+      inputChecker(e.target, "Address");
+      emailValidator(e.target, "last name", new RegExp("^.+$"));
     }
   });
 
@@ -111,12 +128,39 @@ function loginValidation() {
     if (e.target.matches("#btn-submit")) {
       let $btnSubmit = e.target;
 
-      console.log($btnSubmit);
-
       const $inputEmail = $btnSubmit
           .closest("form")
           .querySelector("#inputEmail"),
-        $inputPass = $btnSubmit.closest("form").querySelector("#inputPass");
+        $inputPass = $btnSubmit.closest("form").querySelector("#inputPass"),
+        $verifyInputPass = $btnSubmit
+          .closest("form")
+          .querySelector("#verifyInputPass");
+
+      if (signup && $verifyInputPass !== null) {
+        const $firstName = $btnSubmit
+            .closest("form")
+            .querySelector("#firstName"),
+          $lastName = $btnSubmit.closest("form").querySelector("#lastName"),
+          $inputAddress = $btnSubmit
+            .closest("form")
+            .querySelector("#inputAddress");
+
+        inputChecker($verifyInputPass, "Verify Password");
+        inputChecker($firstName, "First Name");
+        inputChecker($lastName, "Last Name");
+        inputChecker($inputAddress, "Address");
+
+        if (
+          $inputEmail.classList.contains("is-invalid") ||
+          $inputPass.classList.contains("is-invalid") ||
+          $verifyInputPass.classList.contains("is-invalid") ||
+          $firstName.classList.contains("is-invalid") ||
+          $lastName.classList.contains("is-invalid") ||
+          $inputAddress.classList.contains("is-invalid")
+        ) {
+          e.preventDefault();
+        }
+      }
 
       if (!$inputEmail.value || !$inputPass.value) {
         inputChecker($inputEmail, "Email address");

@@ -22,24 +22,12 @@
         <div class="row">
           <!-- Log In - Mobile -->
           <div
-            class="
-              col-12
-              mobile-side
-              d-flex d-md-none
-              flex-column
-              justify-content-evenly
-              align-items-center
-            "
+            class="col-12 mobile-side d-flex d-md-none flex-column justify-content-evenly align-items-center"
           >
             <p class="align-self-start">
               <a
                 href="./index.html"
-                class="
-                  link-body-emphasis
-                  link-offset-2
-                  link-underline-opacity-25
-                  link-underline-opacity-75-hover
-                "
+                class="link-body-emphasis link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover"
                 ><svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
@@ -57,20 +45,21 @@
               >
             </p>
 
-            <form class="w-100" action="">
+            <form class="w-100" action="./home.html" method="get" novalidate>
               <h1 class="text-primary text-center mt-3 mb-3">Sign Up</h1>
-              <!-- First and Last name -->
-              <div class="row g-2 mb-3">
+              <!-- First and Last name Mobile -->
+              <div class="input-group has-validation row g-2 mb-3">
                 <div class="col">
                   <div class="form-floating">
                     <input
                       type="text"
                       class="form-control"
-                      id="floatingInputGrid"
+                      id="firstName"
                       placeholder=""
                       value=""
+                      required
                     />
-                    <label for="floatingInputGrid">First Name</label>
+                    <label for="firstName">First Name</label>
                   </div>
                 </div>
                 <div class="col">
@@ -78,36 +67,44 @@
                     <input
                       type="text"
                       class="form-control"
-                      id="floatingInputGrid"
+                      id="lastName"
                       placeholder=""
                       value=""
+                      required
                     />
-                    <label for="floatingInputGrid">Last Name</label>
+                    <label for="lastName">Last Name</label>
                   </div>
                 </div>
               </div>
-              <!-- Email -->
-              <div class="form-floating mb-3">
-                <input
-                  type="email"
-                  class="form-control"
-                  id="floatingInput"
-                  placeholder=""
-                />
-                <label for="floatingInput">Email address</label>
+
+              <!-- Email Input Mobile -->
+              <div class="input-group has-validation mb-3">
+                <div class="form-floating">
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="inputEmail"
+                    placeholder=""
+                    autocomplete="off"
+                    required
+                  />
+                  <label for="inputEmail" class="form-label"
+                    >Email address</label
+                  >
+                </div>
               </div>
-              <!-- Password and confirm -->
-              <div class="row g-2 mb-3">
+              <!-- Password Input Mobile -->
+              <div class="input-group has-validation row g-2 mb-3">
                 <div class="col">
                   <div class="form-floating">
                     <input
                       type="password"
                       class="form-control"
-                      id="floatingInputGrid"
+                      id="inputPass"
                       placeholder=""
                       value=""
                     />
-                    <label for="floatingInputGrid">Pass</label>
+                    <label for="inputPass">Pass</label>
                   </div>
                 </div>
                 <div class="col">
@@ -115,27 +112,35 @@
                     <input
                       type="password"
                       class="form-control"
-                      id="floatingInputGrid"
+                      id="verifyInputPass"
                       placeholder=""
                       value=""
                     />
-                    <label for="floatingInputGrid">Verify Pass</label>
+                    <label for="verifyInputPass">Verify Pass</label>
                   </div>
                 </div>
               </div>
-              <!-- Address -->
-              <div class="form-floating mb-3">
-                <input
-                  type="text"
-                  class="form-control"
-                  id="floatingInput"
-                  placeholder=""
-                />
-                <label for="floatingInput">Address</label>
+              <!-- Address Input Mobile -->
+              <div class="input-group has-validation mb-3">
+                <div class="form-floating">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputAddress"
+                    placeholder=""
+                    autocomplete="off"
+                    required
+                  />
+                  <label for="inputAddress" class="form-label">Address</label>
+                </div>
               </div>
 
               <div class="d-flex justify-content-center mt-4 mb-4">
-                <button type="submit" class="btn btn-primary flex-grow-1">
+                <button
+                  id="btn-submit"
+                  type="submit"
+                  class="btn btn-primary flex-grow-1"
+                >
                   Sign Up
                 </button>
               </div>
@@ -145,12 +150,7 @@
               Or Log In using
               <a
                 href="./login.html"
-                class="
-                  link-primary
-                  link-offset-2
-                  link-underline-opacity-25
-                  link-underline-opacity-100-hover
-                "
+                class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
                 >Log In</a
               >
             </p>
@@ -162,24 +162,12 @@
           </div>
           <!-- Log In - Desktop-2 -->
           <div
-            class="
-              col-6
-              right-side
-              d-none d-md-flex
-              flex-column
-              justify-content-evenly
-              align-items-center
-            "
+            class="col-6 right-side d-none d-md-flex flex-column justify-content-evenly align-items-center"
           >
             <p class="align-self-start">
               <a
                 href="./index.html"
-                class="
-                  link-body-emphasis
-                  link-offset-2
-                  link-underline-opacity-25
-                  link-underline-opacity-75-hover
-                "
+                class="link-body-emphasis link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover"
                 ><svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
@@ -197,86 +185,102 @@
               >
             </p>
 
-            <form class="w-100" action="">
+            <form class="w-100" action="./home.html" method="get" novalidate>
               <h1 class="text-primary text-center mt-3 mb-3">Sign Up</h1>
 
-              <!-- First and Last name -->
-              <div class="row g-2 mb-3">
-                <div class="col-md">
+              <!-- First and Last name Desktop -->
+              <div class="input-group has-validation row g-2 mb-3">
+                <div class="col">
                   <div class="form-floating">
                     <input
                       type="text"
                       class="form-control"
-                      id="floatingInputGrid"
+                      id="firstName"
                       placeholder=""
                       value=""
+                      required
                     />
-                    <label for="floatingInputGrid">First Name</label>
+                    <label for="firstName">First Name</label>
                   </div>
                 </div>
-                <div class="col-md">
+                <div class="col">
                   <div class="form-floating">
                     <input
                       type="text"
                       class="form-control"
-                      id="floatingInputGrid"
+                      id="lastName"
                       placeholder=""
                       value=""
+                      required
                     />
-                    <label for="floatingInputGrid">Last Name</label>
+                    <label for="lastName">Last Name</label>
                   </div>
                 </div>
               </div>
-              <!-- Email -->
-              <div class="form-floating mb-3">
-                <input
-                  type="email"
-                  class="form-control"
-                  id="floatingInput"
-                  placeholder=""
-                />
-                <label for="floatingInput">Email address</label>
+              <!-- Email Input Desktop -->
+              <div class="input-group has-validation mb-3">
+                <div class="form-floating">
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="inputEmail"
+                    placeholder=""
+                    autocomplete="off"
+                    required
+                  />
+                  <label for="inputEmail" class="form-label"
+                    >Email address</label
+                  >
+                </div>
               </div>
-              <!-- Password and confirm -->
-              <div class="row g-2 mb-3">
-                <div class="col-md">
+              <!-- Password Input Desktop -->
+              <div class="input-group has-validation row g-2 mb-3">
+                <div class="col">
                   <div class="form-floating">
                     <input
                       type="password"
                       class="form-control"
-                      id="floatingInputGrid"
+                      id="inputPass"
                       placeholder=""
                       value=""
                     />
-                    <label for="floatingInputGrid">Pass</label>
+                    <label for="inputPass">Pass</label>
                   </div>
                 </div>
-                <div class="col-md">
+                <div class="col">
                   <div class="form-floating">
                     <input
                       type="password"
                       class="form-control"
-                      id="floatingInputGrid"
+                      id="verifyInputPass"
                       placeholder=""
                       value=""
                     />
-                    <label for="floatingInputGrid">Verify Pass</label>
+                    <label for="verifyInputPass">Verify Pass</label>
                   </div>
                 </div>
               </div>
-              <!-- Address -->
-              <div class="form-floating mb-3">
-                <input
-                  type="email"
-                  class="form-control"
-                  id="floatingInput"
-                  placeholder=""
-                />
-                <label for="floatingInput">Address</label>
+              <!-- Address Input Desktop -->
+              <div class="input-group has-validation mb-3">
+                <div class="form-floating">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputAddress"
+                    placeholder=""
+                    autocomplete="off"
+                    required
+                  />
+                  <label for="inputAddress" class="form-label">Address</label>
+                </div>
               </div>
 
               <div class="d-flex justify-content-center mt-4 mb-4">
-                <button type="submit" class="btn btn-primary flex-grow-1">
+                <button
+                  id="btn-submit"
+                  type="submit"
+                  class="btn btn-primary flex-grow-1"
+                >
                   Sign Up
                 </button>
               </div>
@@ -286,12 +290,7 @@
               Or Log In using
               <a
                 href="./login.html"
-                class="
-                  link-primary
-                  link-offset-2
-                  link-underline-opacity-25
-                  link-underline-opacity-100-hover
-                "
+                class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
                 >Log In</a
               >
             </p>
@@ -299,5 +298,6 @@
         </div>
       </div>
     </main>
+    <script src="./js/logInValidation.js"></script>
   </body>
 </html>

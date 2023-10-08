@@ -236,3 +236,8 @@ td {
   justify-content: center;
   align-items: center;
 }
+
+.card-img-top {
+  aspect-ratio: 3/2;
+  max-height: 300px;
+}

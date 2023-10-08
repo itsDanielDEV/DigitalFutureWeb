@@ -1,23 +1,26 @@
 // Home - Add Item to Cart
 import { products } from "./categories_products.js";
 
+const copyProducts = JSON.parse(JSON.stringify(products));
+
 const d = document,
   w = window,
   $cartBody = d.querySelector(".cart-body");
 
 function addNumTextarea(textarea) {
-  if (typeof textarea.value !== "string" || textarea.value === "")
-    textarea.value = 1;
-  textarea.value = parseInt(textarea.value) + 1;
+  if (typeof textarea.textContent !== "string" || textarea.textContent === "")
+    textarea.textContent = 1;
+  textarea.textContent = parseInt(textarea.textContent) + 1;
 }
 
 function decreaseNumTextarea(textarea) {
-  if (typeof textarea.value !== "string" || textarea.value === "")
-    textarea.value = 1;
-  if (textarea.value - 1 === 0) {
+  if (typeof textarea.textContent !== "string" || textarea.textContent === "")
+    textarea.textContent = 1;
+  if (textarea.textContent - 1 === 0) {
     removeFromCart(textarea);
   }
-  if (textarea.value > 0) textarea.value = parseInt(textarea.value) - 1;
+  if (textarea.textContent > 0)
+    textarea.textContent = parseInt(textarea.textContent) - 1;
 }
 
 function removeFromCart(textarea) {
@@ -29,7 +32,8 @@ function updatePrice(itemId, textarea, itemPriceCart) {
   // let price = itemPrice.textContent.slice([1]);
   let price = products.filter((product) => product.id === Number(itemId));
   price = price[0].price.slice([1]);
-  itemPriceCart.textContent = "$" + Number(price) * Number(textarea.value);
+  itemPriceCart.textContent =
+    "$" + Number(price) * Number(textarea.textContent);
 }
 
 function updateSubtotalPrice() {
@@ -42,12 +46,73 @@ function updateSubtotalPrice() {
 
   $listPrices.forEach((el) => {
     total += Number(el.textContent.slice(1));
+
     $subtotalPrice.textContent = total;
+  });
+
+  //
+  updateAmounts();
+}
+
+function updateAmounts() {
+  //
+
+  let $offcanvasCart = d.querySelector("#offcanvasCart");
+  $offcanvasCart.querySelectorAll(".item-cart").forEach((el) => {
+    // console.log("id: " + el.getAttribute("data-id"));
+    // console.log("value: " + typeof el.querySelector(".num-items").value);
+    const dataIndex = Number(el.getAttribute("data-id")) - 1;
+    const numItems = Number(el.querySelector(".num-items").value);
+
+    products[dataIndex].amount = copyProducts[dataIndex].amount - numItems;
+
+    // console.log(
+    //   `copy id:[${dataIndex}]: ` +
+    //     copyProducts[dataIndex].amount +
+    //     ` original id:[${dataIndex}]: ` +
+    //     products[dataIndex].amount
+    // );
   });
 }
 
 function itemsToCart() {
+  const storedCartData = localStorage.getItem("cartsItemsStored");
+  const cartContainer = document.querySelector(".cart-body"); // Supongamos que tienes un contenedor donde deseas agregar los elementos del carrito
+
+  if (storedCartData) {
+    const itemsArray = JSON.parse(storedCartData);
+
+    itemsArray.forEach((itemHTML) => {
+      // console.log("itemHTML : " + itemHTML);
+      var range = document.createRange();
+
+      // Crear un fragmento de documento a partir de la cadena HTML
+      var fragment = range.createContextualFragment(itemHTML);
+
+      // Acceder al primer elemento hijo del fragmento
+      var elemento = fragment.firstChild;
+
+      // Ahora 'elemento' es un elemento HTML que puedes manipular como desees
+      // console.log(elemento);
+
+      // Agregar 'newItem' al contenedor deseado en el documento
+      cartContainer.appendChild(elemento);
+    });
+    updateSubtotalPrice();
+  }
+
   d.addEventListener("click", (e) => {
+    const $itemCartStorage = d.querySelectorAll(".item-cart");
+
+    const $ArrayCartStorage = Array.from($itemCartStorage).map(
+      (element) => element.outerHTML
+    );
+    console.log($ArrayCartStorage);
+
+    localStorage.setItem("cartsItemsStored", JSON.stringify($ArrayCartStorage));
+
+    localStorage.setItem("productsArray", JSON.stringify(products));
+
     if (e.target.matches("#btn-addCart")) {
       // Referencia al data id del item seleccionado
       const $dataIdNumber = e.target.closest(".col").getAttribute("data-id");
@@ -112,7 +177,7 @@ function itemsToCart() {
       $btndecrease.textContent = "-";
 
       $numItems.classList.add("num-items", "m-2");
-      $numItems.value = "1";
+      $numItems.textContent = "1";
       $numItems.cols = "1";
       $numItems.rows = "1";
 
@@ -131,6 +196,14 @@ function itemsToCart() {
 
       // if ($numItems.value === 0) removeFromCart($numItems);
       $numItems.addEventListener("keyup", (e) => {
+        const $itemCart = e.target.closest(".item-cart");
+        const $itemPriceCart = $itemCart.querySelector("item-cart-price");
+        updatePrice(
+          $itemCart.getAttribute("data-id"),
+          e.target,
+          $itemCartPrice
+        );
+        updateSubtotalPrice();
         if (e.target.value === "0") removeFromCart($numItems);
         if (!Number.isInteger(Number(e.target.value)))
           e.target.value = Math.round(e.target.value);
